@@ -1,6 +1,6 @@
 <?php
 
-use Arcanedev\LogViewer\Utilities\Filesystem;
+use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
 
 return [
 
