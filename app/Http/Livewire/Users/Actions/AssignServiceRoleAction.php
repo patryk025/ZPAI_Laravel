@@ -6,25 +6,26 @@ use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\Action;
 use LaravelViews\Views\View;
 
-class AssignAdminRoleAction extends Action
+class AssignServiceRoleAction extends Action
 {
     public $title = '';
-    public $icon = 'shield';
+    public $icon = 'droplet';
     public function __construct()
     {
-        $this->title = 'Assign admin role';
+        $this->title = 'Assign service role';
         parent::__construct();
     }
 
     public function handle($model, View $view)
     {
-        $model->assignRole(config('auth.roles.admin'));
+        $model->assignRole(config('auth.roles.service'));
         $this->success('Udało się ustawić rolę!');
     }
 
     public function renderIf($model, View $view): bool
     {
         return Auth::user()->isAdmin()
-            && !$model->hasRole(config('auth.roles.admin'));
+            && !$model->hasRole(config('auth.roles.service'));
     }
+
 }

@@ -6,25 +6,26 @@ use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\Action;
 use LaravelViews\Views\View;
 
-class AssignAdminRoleAction extends Action
+class RemoveAdminRoleAction extends Action
 {
     public $title = '';
     public $icon = 'shield';
     public function __construct()
     {
-        $this->title = 'Assign admin role';
+        $this->title = 'Remove admin role';
         parent::__construct();
     }
 
     public function handle($model, View $view)
     {
-        $model->assignRole(config('auth.roles.admin'));
-        $this->success('Udało się ustawić rolę!');
+        $model->removeRole(config('auth.roles.admin'));
+        $this->success('Udało się usunac rolę!');
     }
 
     public function renderIf($model, View $view): bool
     {
         return Auth::user()->isAdmin()
-            && !$model->hasRole(config('auth.roles.admin'));
+            && $model->hasRole(config('auth.roles.admin'));
     }
+
 }

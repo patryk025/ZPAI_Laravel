@@ -2,11 +2,18 @@
 
 namespace App\Http\Livewire\Users;
 
-use App\Http\Livewire\Users\Filters\EmailVerifiedFilter;
 use App\Models\User;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use App\Http\Livewire\Users\Filters\UsersRoleFilter;
+use App\Http\Livewire\Users\Filters\EmailVerifiedFilter;
+use App\Http\Livewire\Users\Actions\AssignAdminRoleAction;
+use App\Http\Livewire\Users\Actions\RemoveAdminRoleAction;
+use App\Http\Livewire\Users\Actions\AssignWorkerRoleAction;
+use App\Http\Livewire\Users\Actions\RemoveWorkerRoleAction;
+use App\Http\Livewire\Users\Actions\AssignServiceRoleAction;
+use App\Http\Livewire\Users\Actions\RemoveServiceRoleAction;
+
 
 class UsersTableView extends TableView
 {
@@ -19,10 +26,10 @@ class UsersTableView extends TableView
         'name',
         'email',
         'roles.name',
-        'created_at'
+        'created_at',
     ];
 
-    protected $paginate = 10;
+    protected $paginate = 7;
 
     /**
      * Sets the headers of the table as you want to be displayed
@@ -35,7 +42,8 @@ class UsersTableView extends TableView
             Header::title(__('users.attributes.name'))->sortBy('name'),
             Header::title(__('users.attributes.email'))->sortBy('email'),
             __('users.attributes.roles'),
-            Header::title(__('users.attributes.created_At'))->sortBy('created_at'),
+            Header::title(__('users.attributes.created_at'))->sortBy('created_at'),
+
         ];
     }
 
@@ -49,16 +57,25 @@ class UsersTableView extends TableView
         return [
             $model->name,
             $model->email,
-            $model->roles->implode('name', ','),
-            $model->created_at
+            $model->roles->implode('name', ', '),
+            $model->created_at,
+
         ];
     }
-
     protected function filters()
     {
-        return [
+        return[
             new UsersRoleFilter,
-            new EmailVerifiedFilter
+            new EmailVerifiedFilter,
+        ];
+    }
+    protected function actionsByRow()
+    {
+        return[
+            new AssignAdminRoleAction,
+            new AssignServiceRoleAction,
+            new RemoveAdminRoleAction,
+            new RemoveServiceRoleAction
         ];
     }
 }
