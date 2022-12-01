@@ -24,9 +24,9 @@ class UserSeeder extends Seeder
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('12345678'),
         ]);
-        $worker = User::create([
-            'name' =>'Worker Test',
-            'email' =>'worker.test@localhost',
+        $service = User::create([
+            'name' =>'Service Test',
+            'email' =>'service.test@localhost',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('12345678'),
         ]);
@@ -41,9 +41,9 @@ class UserSeeder extends Seeder
         if (isset($adminRole)){
             $admin->assignRole($adminRole);
         }
-        $workerRoler = Role::findByName(config('auth.roles.worker'));
-        if (isset($workerRole)){
-            $worker->assignRole($workerRole);
+        $serviceRole = Role::findByName(config('auth.roles.service'));
+        if (isset($serviceRole)){
+            $service->assignRole($serviceRole);
         }
         $userRole = Role::findByName(config('auth.roles.user'));
         if (isset($userRole)){

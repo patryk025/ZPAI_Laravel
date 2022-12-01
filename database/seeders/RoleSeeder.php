@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $admin = Role::create(['name' => config('auth.roles.admin')]);
-        $worker = Role::create(['name' => config('auth.roles.worker')]);
+        $service = Role::create(['name' => config('auth.roles.service')]);
         $user = Role::create(['name' => config('auth.roles.user')]);
 
     }

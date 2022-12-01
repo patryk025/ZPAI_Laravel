@@ -13,16 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('translations.menu.dashboard') }}
                     </x-jet-nav-link>
                     @can('log-viewer')
                     <x-jet-nav-link href="{{ route('log-viewer::dashboard') }}" :active="request()->routeIs('log-viewer::dashboard')">
-                        {{ __('translation.navigation.log-viewer') }}
+                        {{ __('translations.menu.log-viewer') }}
                     </x-jet-nav-link>
                     @endcan
                     @can('users.index')
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('translation.navigation.users') }}
+                        {{ __('translations.menu.users') }}
                     </x-jet-nav-link>
                     @endcan
                 </div>
@@ -148,8 +148,18 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('translations.menu.dashboard') }}
             </x-jet-responsive-nav-link>
+            @can('log-viewer')
+            <x-jet-responsive-nav-link href="{{ route('log-viewer::dashboard') }}" :active="request()->routeIs('log-viewer::dashboard')">
+                {{ __('translations.menu.log-viewer') }}
+            </x-jet-responsive-nav-link>
+            @endcan
+            @can('users.index')
+            <x-jet-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                {{ __('translations.menu.users') }}
+            </x-jet-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

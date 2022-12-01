@@ -110,7 +110,7 @@ return [
 
     'roles' => [ 
         'admin' => env('ROLE_ADMIN', 'admin'),
-        'worker' => env('ROLE_WORKER', 'worker'),
+        'service' => env('ROLE_SERVICE', 'service'),
         'user' => env('ROLE_USER', 'user'),
     ],
 
