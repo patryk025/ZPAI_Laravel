@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HostingTypeController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -37,4 +38,5 @@ Route::middleware([
             ->middleware(['permission:users.index']);
     });
 
+    Route::resource('hosting-types', HostingTypeController::class);
 });
