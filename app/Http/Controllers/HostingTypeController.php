@@ -27,7 +27,9 @@ class HostingTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'hosting-types.form'
+        );
     }
 
     /**
@@ -58,9 +60,13 @@ class HostingTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(HostingType $hostingType)
     {
-        //
+        return view(
+            'hosting-types.form', [
+                'hosting-type' => $hostingType
+            ]
+        );
     }
 
     /**

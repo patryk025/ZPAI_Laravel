@@ -30,6 +30,11 @@
                         {{ __('translations.menu.hosting-types') }}
                     </x-jet-nav-link>
                     @endcan
+                    @can('hosting.index')
+                    <x-jet-nav-link href="{{ route('hosting.index') }}" :active="request()->routeIs('hosting.index')">
+                        {{ __('translations.menu.hosting') }}
+                    </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -168,6 +173,11 @@
             @can('hosting-types.index')
             <x-jet-responsive-nav-link href="{{ route('hosting-types.index') }}" :active="request()->routeIs('hosting-types.index')">
                 {{ __('translations.menu.hosting-types') }}
+            </x-jet-responsive-nav-link>
+            @endcan
+            @can('hosting.index')
+            <x-jet-responsive-nav-link href="{{ route('hosting.index') }}" :active="request()->routeIs('hosting.index')">
+                {{ __('translations.menu.hosting') }}
             </x-jet-responsive-nav-link>
             @endcan
         </div>

@@ -9,6 +9,9 @@
         ],
         'actions' => [],
         'messages' => [
-            'successes' => []
+            'successes' => [
+                'stored' => 'Dodano rodzaj hostingu :name',
+                'updated' => 'Zaktualizowano rodzaj hostingu :name'
+            ]
         ]
     ];

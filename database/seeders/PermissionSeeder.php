@@ -32,6 +32,9 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'hosting-types.index']);
         Permission::create(['name' => 'hosting-types.manage']);
 
+        Permission::create(['name' => 'hosting.index']);
+        Permission::create(['name' => 'hosting.manage']);
+
         $adminRole = Role::findByName(config('auth.roles.admin'));
         $adminRole->givePermissionTo('users.index');
         $adminRole->givePermissionTo('users.store');
@@ -43,10 +46,15 @@ class PermissionSeeder extends Seeder
         $adminRole->givePermissionTo('hosting-types.index');
         $adminRole->givePermissionTo('hosting-types.manage');
 
+        $adminRole->givePermissionTo('hosting.index');
+        $adminRole->givePermissionTo('hosting.manage');
+
         $serviceRole = Role::findByName(config('auth.roles.service'));
         $serviceRole->givePermissionTo('hosting-types.index');
+        $serviceRole->givePermissionTo('hosting.index');
 
         $userRole = Role::findByName(config('auth.roles.user'));
         $userRole->givePermissionTo('hosting-types.index');
+        $userRole->givePermissionTo('hosting.index');
     }
 }
