@@ -16,11 +16,11 @@ class HostingTypeForm extends Component
 
     public function rules() {
         return [
-            'hosting-type.name' => [
+            'hostingType.name' => [
                 'required',
                 'string',
                 'min:2',
-                'unique:hosting-type,name' .
+                'unique:hosting_types,name' .
                     ($this->editmode ? (',' . $this->category->id) : '')
             ]
         ];

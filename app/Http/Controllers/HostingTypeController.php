@@ -64,7 +64,7 @@ class HostingTypeController extends Controller
     {
         return view(
             'hosting-types.form', [
-                'hosting-type' => $hostingType
+                'hostingType' => $hostingType
             ]
         );
     }

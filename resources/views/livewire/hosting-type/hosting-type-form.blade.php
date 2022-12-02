@@ -13,7 +13,7 @@
                 <label for="name">{{ __('hosting-types.attributes.name')}}</label>
             </div>
             <div class="">
-                <x-input placeholder="Wpisz tekst" wire:model="hosting-type.name" />
+                <x-input placeholder="Wpisz tekst" wire:model="hostingType.name" />
             </div>
             <div class="flex justify-end pt-2">
                 <x-button href="{{ route('hosting-types.index') }}" secondary class="mr-2" label="Powrót"></x-button>
