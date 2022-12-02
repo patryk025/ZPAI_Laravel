@@ -38,7 +38,7 @@ class HostingTypeForm extends Component
     }
 
     public function render() {
-        return view("livewire.hosting-types.hosting-type-form");
+        return view("livewire.hosting-type.hosting-type-form");
     }
 
     public function updated($propertyName) {

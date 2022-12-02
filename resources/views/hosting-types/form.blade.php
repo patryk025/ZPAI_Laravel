@@ -8,9 +8,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @if (isset($hostingType))
-                    <livewire:hosting-types.hosting-type-form :hostingType="$hostingType" :editMode="true" />
+                    <livewire:hosting-types.hosting-type-form :hostingType="$hostingType" :editmode="true" />
                 @else
-                    <livewire:hosting-types.hosting-type-form :editMode="false" />
+                    <livewire:hosting-types.hosting-type-form :editmode="false" />
                 @endif
             </div>
         </div>

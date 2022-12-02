@@ -13,5 +13,9 @@
                 'stored' => 'Dodano rodzaj hostingu :name',
                 'updated' => 'Zaktualizowano rodzaj hostingu :name'
             ]
+        ],
+        'labels' => [
+            'create_form_title' => 'Utwórz nowy rodzaj hostingu',
+            'edit_form_title' => 'Edytuj rodzaj hostingu'
         ]
     ];
