@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(HostingTypeSeeder::class);
          \App\Models\User::factory(10)->create();
+        $this->call(HostingSeeder::class);
 
         //  \App\Models\User::factory()->create([
         //      'name' => 'Test User',
