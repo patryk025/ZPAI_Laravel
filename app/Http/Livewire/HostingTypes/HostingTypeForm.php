@@ -21,7 +21,7 @@ class HostingTypeForm extends Component
                 'string',
                 'min:2',
                 'unique:hosting_types,name' .
-                    ($this->editmode ? (',' . $this->category->id) : '')
+                    ($this->editmode ? (',' . $this->hostingType->id) : '')
             ]
         ];
     }
@@ -46,6 +46,22 @@ class HostingTypeForm extends Component
     }
 
     public function save() {
-        
+        if ($this->editmode) {
+            $this->authorize('update', $this->hostingType);
+        } else {
+            $this->authorize('create', HostingType::class);
+        }
+
+        $this->validate();
+        $this->hostingType->save();
+        $this->notification()->success(
+            $title = $this->editmode
+                ? "Zaktualizowano typ hostingu"
+                : "Dodano nowy typ hostingu",
+            $description = $this->editmode
+                ? "Udało się zaktualizować typ hostingu"
+                : "Udało się stworzyć nowy typ hostingu"
+        );
+        $this->editMode = true;
     }
 }

@@ -6,13 +6,16 @@ use App\Models\HostingType;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use App\Http\Livewire\HostingTypes\Filters\SoftDeleteFilter;
+use App\Http\Livewire\HostingTypes\Actions\EditHostingTypeAction;
+use App\Http\Livewire\HostingTypes\Actions\SoftDeleteStatusAction;
 
 class HostingTypeView extends TableView
 {
     /**
      * Sets a model class to get the initial data
      */
-    protected $model = User::class;
+    protected $model = HostingType::class;
 
     public $searchBy = [
         'name',
@@ -54,5 +57,22 @@ class HostingTypeView extends TableView
             $model->updated_at,
             $model->deleted_at
         ];
+    }
+
+    protected function filters() {
+        return [
+            new SoftDeleteFilter
+        ];
+    }
+
+    protected function actionsByRow() {
+        return [
+            new EditHostingTypeAction('hosting-types.edit', 'Edytuj'),
+            new SoftDeleteStatusAction()
+        ];
+    }
+
+    public function softDelete(int $id) {
+
     }
 }
