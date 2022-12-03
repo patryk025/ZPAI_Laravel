@@ -3,20 +3,21 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\User;
+use WireUi\Traits\Actions;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use App\Http\Livewire\Users\Filters\UsersRoleFilter;
 use App\Http\Livewire\Users\Filters\EmailVerifiedFilter;
 use App\Http\Livewire\Users\Actions\AssignAdminRoleAction;
 use App\Http\Livewire\Users\Actions\RemoveAdminRoleAction;
-use App\Http\Livewire\Users\Actions\AssignWorkerRoleAction;
-use App\Http\Livewire\Users\Actions\RemoveWorkerRoleAction;
 use App\Http\Livewire\Users\Actions\AssignServiceRoleAction;
 use App\Http\Livewire\Users\Actions\RemoveServiceRoleAction;
 
 
 class UsersTableView extends TableView
 {
+    use Actions;
+
     /**
      * Sets a model class to get the initial data
      */

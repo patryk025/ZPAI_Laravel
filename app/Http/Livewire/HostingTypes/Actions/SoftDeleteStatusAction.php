@@ -17,6 +17,7 @@ class SoftDeleteStatusAction extends Action
 
     public function handle($model, View $view)
     {
+        //dd($view);
         $view->dialog()->confirm([
             'title' => 'Usuwanie kategorii',
             'description' => 'Czy na pewno usunąć kategorię: ' . $model->name,

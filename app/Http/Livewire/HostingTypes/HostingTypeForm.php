@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 
 class HostingTypeForm extends Component
 {
-    use Actions;
-
     public HostingType $hostingType;
     public Bool $editmode;
 
@@ -46,12 +44,7 @@ class HostingTypeForm extends Component
     }
 
     public function save() {
-        if ($this->editmode) {
-            $this->authorize('update', $this->hostingType);
-        } else {
-            $this->authorize('create', HostingType::class);
-        }
-
+        sleep(1);
         $this->validate();
         $this->hostingType->save();
         $this->notification()->success(

@@ -19,7 +19,11 @@ class AssignAdminRoleAction extends Action
     public function handle($model, View $view)
     {
         $model->assignRole(config('auth.roles.admin'));
-        $this->success('Udało się ustawić rolę!');
+        //$this->success('Udało się ustawić rolę!');
+        $view->notification()->success(
+            $title = "Udało się",
+            $description = "Udało się nadać uprawnienia admina"
+        );
     }
 
     public function renderIf($model, View $view): bool

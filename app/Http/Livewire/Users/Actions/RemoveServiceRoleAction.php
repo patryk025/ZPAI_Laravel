@@ -19,7 +19,11 @@ class RemoveServiceRoleAction extends Action
     public function handle($model, View $view)
     {
         $model->removeRole(config('auth.roles.service'));
-        $this->success('Udało się usunac rolę!');
+        //$this->success('Udało się usunąć rolę!');
+        $view->notification()->success(
+            $title = "Udało się",
+            $description = "Udało się odebrać uprawnienia serwisanta"
+        );
     }
 
     public function renderIf($model, View $view): bool

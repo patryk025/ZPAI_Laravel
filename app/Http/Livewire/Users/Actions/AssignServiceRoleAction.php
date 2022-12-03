@@ -19,7 +19,11 @@ class AssignServiceRoleAction extends Action
     public function handle($model, View $view)
     {
         $model->assignRole(config('auth.roles.service'));
-        $this->success('Udało się ustawić rolę!');
+        //$this->success('Udało się ustawić rolę!');
+        $view->notification()->success(
+            $title = "Udało się",
+            $description = "Udało się nadać uprawnienia serwisanta"
+        );
     }
 
     public function renderIf($model, View $view): bool

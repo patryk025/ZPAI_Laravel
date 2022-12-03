@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\HostingTypes;
 
+use WireUi\Traits\Actions;
 use App\Models\HostingType;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
@@ -12,6 +13,7 @@ use App\Http\Livewire\HostingTypes\Actions\SoftDeleteStatusAction;
 
 class HostingTypeView extends TableView
 {
+    use Actions;
     /**
      * Sets a model class to get the initial data
      */
@@ -73,6 +75,13 @@ class HostingTypeView extends TableView
     }
 
     public function softDelete(int $id) {
-
+        $hostingType = HostingType::find($id);
+        $hostingType->delete();
+        $this->notification()->success(
+            $title = "Usunięto",
+            $description = __("Udało się skasować typ hostingu :name", [
+                'name' => $hostingType->name,
+            ])
+        );
     }
 }
