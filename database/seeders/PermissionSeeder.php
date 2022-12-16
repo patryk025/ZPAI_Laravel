@@ -35,6 +35,12 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'hosting.index']);
         Permission::create(['name' => 'hosting.manage']);
 
+        Permission::create(['name' => 'ticket-status.index']);
+        Permission::create(['name' => 'ticket-status.manage']);
+
+        Permission::create(['name' => 'ticket.index']);
+        Permission::create(['name' => 'ticket.manage']);
+
         $adminRole = Role::findByName(config('auth.roles.admin'));
         $adminRole->givePermissionTo('users.index');
         $adminRole->givePermissionTo('users.store');
@@ -49,12 +55,22 @@ class PermissionSeeder extends Seeder
         $adminRole->givePermissionTo('hosting.index');
         $adminRole->givePermissionTo('hosting.manage');
 
+        $adminRole->givePermissionTo('ticket-status.index');
+        $adminRole->givePermissionTo('ticket-status.manage');
+
+        $adminRole->givePermissionTo('ticket.index');
+        $adminRole->givePermissionTo('ticket.manage');
+
         $serviceRole = Role::findByName(config('auth.roles.service'));
         $serviceRole->givePermissionTo('hosting-types.index');
         $serviceRole->givePermissionTo('hosting.index');
+        $serviceRole->givePermissionTo('ticket-status.index');
+        $serviceRole->givePermissionTo('ticket.index');
 
         $userRole = Role::findByName(config('auth.roles.user'));
         $userRole->givePermissionTo('hosting-types.index');
         $userRole->givePermissionTo('hosting.index');
+        $userRole->givePermissionTo('ticket-status.index');
+        $userRole->givePermissionTo('ticket.index');
     }
 }

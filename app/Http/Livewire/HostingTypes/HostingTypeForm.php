@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class HostingTypeForm extends Component
 {
+    use Actions;
     public HostingType $hostingType;
     public Bool $editmode;
 

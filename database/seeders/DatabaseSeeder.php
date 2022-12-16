@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
         $this->call(HostingTypeSeeder::class);
          \App\Models\User::factory(10)->create();
         $this->call(HostingSeeder::class);
+        $this->call(TicketStatusSeeder::class);
+        $this->call(TicketSeeder::class);
+        $this->call(TicketMessageSeeder::class);
 
         //  \App\Models\User::factory()->create([
         //      'name' => 'Test User',
