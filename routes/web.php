@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\HostingController;
 use App\Http\Controllers\HostingTypeController;
 
@@ -43,4 +44,5 @@ Route::middleware([
         'index', 'create', 'edit'
     ]);
     Route::resource('hosting', HostingController::class);
+    Route::resource('ticket', TicketController::class);
 });

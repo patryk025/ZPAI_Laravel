@@ -25,7 +25,7 @@
                         {{ __('translations.menu.users') }}
                     </x-jet-nav-link>
                     @endcan
-                    @can('hosting-types.index')
+                    @can('hosting-types.manage')
                     <x-jet-nav-link href="{{ route('hosting-types.index') }}" :active="request()->routeIs('hosting-types.index')">
                         {{ __('translations.menu.hosting-types') }}
                     </x-jet-nav-link>
@@ -33,6 +33,11 @@
                     @can('hosting.index')
                     <x-jet-nav-link href="{{ route('hosting.index') }}" :active="request()->routeIs('hosting.index')">
                         {{ __('translations.menu.hosting') }}
+                    </x-jet-nav-link>
+                    @endcan
+                    @can('ticket.index')
+                    <x-jet-nav-link href="{{ route('ticket.index') }}" :active="request()->routeIs('ticket.index')">
+                        {{ __('translations.menu.ticket') }}
                     </x-jet-nav-link>
                     @endcan
                 </div>
@@ -170,7 +175,7 @@
                 {{ __('translations.menu.users') }}
             </x-jet-responsive-nav-link>
             @endcan
-            @can('hosting-types.index')
+            @can('hosting-types.manage')
             <x-jet-responsive-nav-link href="{{ route('hosting-types.index') }}" :active="request()->routeIs('hosting-types.index')">
                 {{ __('translations.menu.hosting-types') }}
             </x-jet-responsive-nav-link>
@@ -178,6 +183,11 @@
             @can('hosting.index')
             <x-jet-responsive-nav-link href="{{ route('hosting.index') }}" :active="request()->routeIs('hosting.index')">
                 {{ __('translations.menu.hosting') }}
+            </x-jet-responsive-nav-link>
+            @endcan
+            @can('ticket.index')
+            <x-jet-responsive-nav-link href="{{ route('ticket.index') }}" :active="request()->routeIs('ticket.index')">
+                {{ __('translations.menu.ticket') }}
             </x-jet-responsive-nav-link>
             @endcan
         </div>

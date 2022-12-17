@@ -16,7 +16,7 @@ class TicketController extends Controller
     {
         return view(
 
-            'hosting-types.index'
+            'ticket.index'
         );
     }
 
@@ -28,7 +28,7 @@ class TicketController extends Controller
     public function create()
     {
         return view(
-            'hosting-types.form'
+            'ticket.form'
         );
     }
 
@@ -63,8 +63,8 @@ class TicketController extends Controller
     public function edit(Ticket $ticket)
     {
         return view(
-            'hosting-types.form', [
-                'hostingType' => $ticket
+            'ticket.form', [
+                'ticket' => $ticket
             ]
         );
     }

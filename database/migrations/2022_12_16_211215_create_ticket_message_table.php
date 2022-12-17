@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('message_from');
             $table->string('message', 2000);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

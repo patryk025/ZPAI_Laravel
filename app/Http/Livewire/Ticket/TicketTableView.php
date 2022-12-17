@@ -1,27 +1,29 @@
 <?php
 
-namespace App\Http\Livewire\HostingTypes;
+namespace App\Http\Livewire\Ticket;
 
+use App\Models\Ticket;
 use WireUi\Traits\Actions;
-use App\Models\HostingType;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use Illuminate\Contracts\Database\Eloquent\Builder;
-use App\Http\Livewire\HostingTypes\Filters\SoftDeleteFilter;
-use App\Http\Livewire\HostingTypes\Actions\EditHostingTypeAction;
-use App\Http\Livewire\HostingTypes\Actions\RestoreHostingTypeAction;
-use App\Http\Livewire\HostingTypes\Actions\SoftDeleteStatusAction;
+use App\Http\Livewire\Ticket\Actions\EditTicketAction;
+use App\Http\Livewire\Ticket\Filters\SoftDeleteFilter;
+use App\Http\Livewire\Ticket\Actions\SoftDeleteTicketAction;
 
-class HostingTypeView extends TableView
+class TicketTableView extends TableView
 {
     use Actions;
+
     /**
      * Sets a model class to get the initial data
      */
-    protected $model = HostingType::class;
+    protected $model = Ticket::class;
 
     public $searchBy = [
-        'name',
+        'status_id',
+        'title',
+        'description',
         'created_at',
         'updated_at',
         'deleted_at'
@@ -29,7 +31,7 @@ class HostingTypeView extends TableView
 
     public function repository(): Builder
     {
-        return HostingType::query()->withTrashed();
+        return Ticket::query()->withTrashed();
     }
 
     /**
@@ -40,7 +42,9 @@ class HostingTypeView extends TableView
     public function headers(): array
     {
         return [
-            Header::title(__('hosting-types.attributes.name'))->sortBy('name'),
+            Header::title(__('Status'))->sortBy('name'),
+            Header::title(__('Tytuł'))->sortBy('name'),
+            Header::title(__('Opis'))->sortBy('name'),
             Header::title(__('hosting-types.attributes.created_at'))->sortBy('created_at'),
             Header::title(__('hosting-types.attributes.updated_at'))->sortBy('updated_at'),
             Header::title(__('hosting-types.attributes.deleted_at'))->sortBy('deleted_at'),
@@ -55,7 +59,9 @@ class HostingTypeView extends TableView
     public function row($model): array
     {
         return [
-            $model->name,
+            $model->status_id,
+            $model->title,
+            $model->description,
             $model->created_at,
             $model->updated_at,
             $model->deleted_at
@@ -70,31 +76,18 @@ class HostingTypeView extends TableView
 
     protected function actionsByRow() {
         return [
-            new EditHostingTypeAction('hosting-types.edit', 'Edytuj'),
-            new SoftDeleteStatusAction(),
-            new RestoreHostingTypeAction()
+            new EditTicketAction('ticket.edit', 'Edytuj'),
+            new SoftDeleteTicketAction()
         ];
     }
 
     public function softDelete(int $id) {
-        $hostingType = HostingType::find($id);
+        $hostingType = Ticket::find($id);
         $hostingType->delete();
         $this->notification()->success(
             $title = "Usunięto",
             $description = __("Udało się skasować typ hostingu :name", [
                 'name' => $hostingType->name,
-            ])
-        );
-    }
-
-    public function restore(int $id)
-    {
-        $hostingType = HostingType::withTrashed()->find($id);
-        $hostingType->restore();
-        $this->notification()->success(
-            $title = __("Powodzenie"),
-            $description = __("Przywrócono typ hostingu :name", [
-                'name' => $hostingType->name
             ])
         );
     }
