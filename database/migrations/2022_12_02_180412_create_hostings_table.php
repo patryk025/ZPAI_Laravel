@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name', 100);
             $table->timestamp('active_from');
             $table->timestamp('active_to');
-            $table->integer('user_id');
-            $table->integer('hosting_type');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('hosting_type_id');
             $table->timestamps();
             $table->softDeletes();
         });

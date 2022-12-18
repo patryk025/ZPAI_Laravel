@@ -10,8 +10,13 @@ class TicketMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hosting_id',
+        'ticket_id',
         'message_from',
         'message'
     ];
+
+    public function ticket() 
+    {
+        return $this->belongsTo(Ticket::class);
+    }
 }

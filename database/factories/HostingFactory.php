@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\HostingType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,8 +28,12 @@ class HostingFactory extends Factory
                 '- 1 week',
                 '+ 5 weeks'
             ),
-            'user_id' => $this->faker->numberBetween(1, 50),
-            'hosting_type' => $this->faker->numberBetween(1, 50),
+            'user_id' => User::select('id')
+                ->orderByRaw('RAND()')
+                ->first()->id,
+            'hosting_type_id' => HostingType::select('id')
+                ->orderByRaw('RAND()')
+                ->first()->id,
             'created_at' => $this->faker->dateTimeBetween(
                 '- 8 weeks',
                 '- 4 weeks'

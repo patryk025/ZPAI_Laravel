@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Hosting;
+use App\Models\TicketStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,10 +19,14 @@ class TicketFactory extends Factory
     public function definition()
     {
         return [
-            'hosting_id' => $this->faker->numberBetween(1, 50),
-            'status_id' => $this->faker->numberBetween(1, 5),
+            'hosting_id' => Hosting::select('id')
+                ->orderByRaw('RAND()')
+                ->first()->id,
+            'ticket_status_id' => TicketStatus::select('id')
+            ->orderByRaw('RAND()')
+            ->first()->id,
             'title' => $this->faker->word(),
-            'description' => $this->faker->paragraph()
+            'description' => $this->faker->paragraph(1)
         ];
     }
 }

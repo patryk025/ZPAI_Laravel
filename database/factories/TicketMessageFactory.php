@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class TicketMessageFactory extends Factory
     public function definition()
     {
         return [
-            'hosting_id' => $this->faker->numberBetween(1, 50),
+            'ticket_id' => Ticket::select('id')
+                ->orderByRaw('RAND()')
+                ->first()->id,
             'message_from' => $this->faker->numberBetween(0, 1),
             'message' => $this->faker->paragraph(6)
         ];

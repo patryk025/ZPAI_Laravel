@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ticket_messages', function (Blueprint $table) {
             $table->id();
-            $table->integer('hosting_id');
+            $table->unsignedBigInteger('ticket_id');
             $table->integer('message_from');
             $table->string('message', 2000);
             $table->timestamps();

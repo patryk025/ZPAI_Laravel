@@ -14,4 +14,9 @@ class HostingType extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function hostings()
+    {
+        return $this->belongsToMany(Hosting::class);
+    }
 }

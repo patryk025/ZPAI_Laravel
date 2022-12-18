@@ -13,8 +13,18 @@ class Ticket extends Model
 
     protected $fillable = [
         'hosting_id',
-        'status_id',
+        'ticket_status_id',
         'title',
         'description'
     ];
+
+    public function status() 
+    {
+        return $this->belongsTo(TicketStatus::class);
+    }
+
+    public function hosting() 
+    {
+        return $this->belongsTo(Hosting::class);
+    }
 }

@@ -12,4 +12,9 @@ class TicketStatus extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function tickets() 
+    {
+        return $this->belongsToMany(Ticket::class);
+    }
 }
