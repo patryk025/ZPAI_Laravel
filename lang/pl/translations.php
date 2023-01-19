@@ -7,6 +7,7 @@ return [
         "users" => "Użyszkodnicy",
         "hosting-types" => "Rodzaje hostingów",
         "hosting" => "Hostingi",
+        "ticket" => "Tickety",
     ],
     "yes" => "Tak",
     "no" => "Nie"

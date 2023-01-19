@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Ticket;
+use App\Models\HostingType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,6 +34,6 @@ class Hosting extends Model
 
     public function tickets()
     {
-        return $this->hasMany(HostingType::class);
+        return $this->hasMany(Ticket::class);
     }
 }

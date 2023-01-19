@@ -15,6 +15,7 @@ class HostingTableView extends TableView
 
     public $searchBy = [
         'name',
+        'user.name',
         'active_from',
         'active_to'
     ];
@@ -28,6 +29,7 @@ class HostingTableView extends TableView
     {
         return [
             Header::title(__('hosting.attributes.name'))->sortBy('name'),
+            Header::title(__('Nazwa użytkownika')),
             Header::title(__('hosting.attributes.active_from'))->sortBy('active_from'),
             Header::title(__('hosting.attributes.active_to'))->sortBy('active_to'),
         ];
@@ -42,6 +44,7 @@ class HostingTableView extends TableView
     {
         return [
             $model->name,
+            $model->user->name,
             $model->active_from,
             $model->active_to
         ];
