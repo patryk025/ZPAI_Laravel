@@ -14,9 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        dd(
+        /*dd(
             Ticket::with('hosting')->get()->first()
-        );
+        );*/
         return view(
 
             'ticket.index'

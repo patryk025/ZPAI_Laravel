@@ -21,10 +21,11 @@ class TicketTableView extends TableView
     protected $model = Ticket::class;
 
     public $searchBy = [
-        'status_id',
         'title',
         'description',
-        'created_at',
+        'hosting.name',
+        'ticket_status.name',
+        'hosting.user.name',
         'updated_at',
         'deleted_at'
     ];
@@ -42,9 +43,11 @@ class TicketTableView extends TableView
     public function headers(): array
     {
         return [
-            Header::title(__('Status'))->sortBy('name'),
-            Header::title(__('Tytuł'))->sortBy('name'),
-            Header::title(__('Opis'))->sortBy('name'),
+            Header::title(__('Tytuł'))->sortBy('title'),
+            Header::title(__('Opis'))->sortBy('description'),
+            Header::title(__('Hosting')),
+            Header::title(__('Status')),
+            Header::title(__('Nazwa użytkownika'))->sortBy('name'),
             Header::title(__('hosting-types.attributes.created_at'))->sortBy('created_at'),
             Header::title(__('hosting-types.attributes.updated_at'))->sortBy('updated_at'),
             Header::title(__('hosting-types.attributes.deleted_at'))->sortBy('deleted_at'),
@@ -58,10 +61,13 @@ class TicketTableView extends TableView
      */
     public function row($model): array
     {
+        //dd($model);
         return [
-            $model->status_id,
             $model->title,
             $model->description,
+            $model->hosting->name,
+            $model->ticket_status->name,
+            $model->hosting->user->name,
             $model->created_at,
             $model->updated_at,
             $model->deleted_at

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Hosting;
+use App\Models\TicketStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +20,7 @@ class Ticket extends Model
         'description'
     ];
 
-    public function status() 
+    public function ticket_status() 
     {
         return $this->belongsTo(TicketStatus::class);
     }

@@ -63,6 +63,6 @@ class TicketForm extends Component
                 ? "Udało się zaktualizować ticket"
                 : "Udało się otworzyć nowe zgłoszenie"
         );
-        $this->editMode = true;
+        $this->editmode = true;
     }
 }
