@@ -8,6 +8,7 @@ use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use App\Http\Livewire\Ticket\Actions\EditTicketAction;
+use App\Http\Livewire\Ticket\Actions\OpenTicketChatAction;
 use App\Http\Livewire\Ticket\Filters\SoftDeleteFilter;
 use App\Http\Livewire\Ticket\Actions\SoftDeleteTicketAction;
 
@@ -82,19 +83,8 @@ class TicketTableView extends TableView
 
     protected function actionsByRow() {
         return [
-            new EditTicketAction('ticket.edit', 'Edytuj'),
-            new SoftDeleteTicketAction()
+            new OpenTicketChatAction('ticket.show', 'Otwórz chat'),
+            new EditTicketAction('ticket.edit', 'Edytuj')
         ];
-    }
-
-    public function softDelete(int $id) {
-        $hostingType = Ticket::find($id);
-        $hostingType->delete();
-        $this->notification()->success(
-            $title = "Usunięto",
-            $description = __("Udało się skasować typ hostingu :name", [
-                'name' => $hostingType->name,
-            ])
-        );
     }
 }

@@ -7,11 +7,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @if (isset($ticket))
-                    <livewire:ticket.ticket-form :ticket="$ticket" :editmode="true" />
-                @else
-                    <livewire:ticket.ticket-form :editmode="false" />
-                @endif
+                <livewire:ticket.ticket-chat />
             </div>
         </div>
     </div>

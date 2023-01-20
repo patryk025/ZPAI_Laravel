@@ -7,7 +7,10 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-        <livewire:ticket.ticket-table-view />
+        <?php dd($ticket->ticket_messages()); ?>
+        @foreach ($ticket->ticket_messages() as $message)
+          <span>Od $message->message_from : $message->message</span>
+        @endforeach
       </div>
     </div>
   </div>

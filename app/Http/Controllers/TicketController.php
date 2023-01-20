@@ -54,7 +54,11 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        //
+        return view(
+            'ticket.chat', [
+                'ticket' => Ticket::find($id)
+            ]
+        );
     }
 
     /**
