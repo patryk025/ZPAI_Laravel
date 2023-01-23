@@ -81,8 +81,8 @@
             @endforeach
           </div>
           <div class="ticketChatInput">
-            <input type="text" id="ticketChatInput">
-            <button id="ticketChatSend" onclick="alert('Not implemented')">Wyślij</button>
+            <x-input placeholder="Wpisz treść"/>
+            <x-button secondary class="mr-2" onclick="alert('Not implemented')" label="Wyślij"></x-button>
           </div>
         </div>
       </div>

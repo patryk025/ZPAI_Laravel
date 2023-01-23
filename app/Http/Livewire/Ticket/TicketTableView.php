@@ -9,6 +9,7 @@ use LaravelViews\Views\TableView;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use App\Http\Livewire\Ticket\Actions\EditTicketAction;
 use App\Http\Livewire\Ticket\Actions\OpenTicketChatAction;
+use App\Http\Livewire\Ticket\Actions\RestoreTicketAction;
 use App\Http\Livewire\Ticket\Filters\SoftDeleteFilter;
 use App\Http\Livewire\Ticket\Actions\SoftDeleteTicketAction;
 
@@ -84,7 +85,32 @@ class TicketTableView extends TableView
     protected function actionsByRow() {
         return [
             new OpenTicketChatAction('ticket.show', 'Otwórz chat'),
-            new EditTicketAction('ticket.edit', 'Edytuj')
+            new EditTicketAction('ticket.edit', 'Edytuj'),
+            new SoftDeleteTicketAction(),
+            new RestoreTicketAction()
         ];
+    }
+
+    public function softDelete(int $id) {
+        $ticket = Ticket::find($id);
+        $ticket->delete();
+        $this->notification()->success(
+            $title = "Usunięto",
+            $description = __("Udało się skasować ticket :name", [
+                'name' => $ticket->title,
+            ])
+        );
+    }
+
+    public function restore(int $id)
+    {
+        $ticket = Ticket::withTrashed()->find($id);
+        $ticket->restore();
+        $this->notification()->success(
+            $title = __("Powodzenie"),
+            $description = __("Przywrócono ticket :name", [
+                'name' => $ticket->title
+            ])
+        );
     }
 }

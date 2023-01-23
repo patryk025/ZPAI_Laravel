@@ -19,7 +19,7 @@ class SoftDeleteTicketAction extends Action
     {
         //dd($view);
         $view->dialog()->confirm([
-            'title' => 'Usuwanie kategorii',
+            'title' => 'Usuwanie zgłoszenia',
             'description' => 'Czy na pewno usunąć zgłoszenie: ' . $model->name,
             'icon' => 'question',
             'iconColor' => 'text-red-500',

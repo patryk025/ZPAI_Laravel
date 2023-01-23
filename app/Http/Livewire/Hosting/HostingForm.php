@@ -1,43 +1,43 @@
 <?php
 
-namespace App\Http\Livewire\HostingTypes;
+namespace App\Http\Livewire\Hosting;
 
 use Livewire\Component;
 use WireUi\Traits\Actions;
-use App\Models\HostingType;
+use App\Models\Hosting;
 use Illuminate\Support\Str;
 
-class HostingTypeForm extends Component
+class HostingForm extends Component
 {
     use Actions;
-    public HostingType $hostingType;
+    public Hosting $hosting;
     public Bool $editmode;
 
     public function rules() {
         return [
-            'hostingType.name' => [
+            'hosting.name' => [
                 'required',
                 'string',
                 'min:2',
-                'unique:hosting_types,name' .
-                    ($this->editmode ? (',' . $this->hostingType->id) : '')
+                'unique:hosting,name' .
+                    ($this->editmode ? (',' . $this->hosting->id) : '')
             ]
         ];
     }
 
     public function validationAttributes() {
         return [
-            'name' => Str::lower(__('hosting-types.attributes.name'))
+            'name' => Str::lower(__('hosting.attributes.name'))
         ];
     }
 
-    public function mount(HostingType $hostingType, Bool $editmode) {
-        $this->hostingType = $hostingType;
+    public function mount(Hosting $hosting, Bool $editmode) {
+        $this->hosting = $hosting;
         $this->editmode = $editmode;
     }
 
     public function render() {
-        return view("livewire.hosting-type.hosting-type-form");
+        return view("livewire.hosting.hosting-form");
     }
 
     public function updated($propertyName) {
@@ -47,7 +47,7 @@ class HostingTypeForm extends Component
     public function save() {
         sleep(1);
         $this->validate();
-        $this->hostingType->save();
+        $this->hosting->save();
         $this->notification()->success(
             $title = $this->editmode
                 ? "Zaktualizowano typ hostingu"
@@ -59,3 +59,4 @@ class HostingTypeForm extends Component
         $this->editmode = true;
     }
 }
+

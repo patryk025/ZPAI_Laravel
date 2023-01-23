@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Hosting;
 
 use App\Models\Hosting;
+use WireUi\Traits\Actions;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 
 class HostingTableView extends TableView
 {
+    use Actions;
     /**
      * Sets a model class to get the initial data
      */
