@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hosting;
 use Illuminate\Http\Request;
 
 class HostingController extends Controller
@@ -25,7 +26,9 @@ class HostingController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'hosting.form'
+        );
     }
 
     /**
@@ -56,9 +59,13 @@ class HostingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Hosting $hosting)
     {
-        //
+        return view(
+            'hosting.form', [
+                'hosting' => $hosting
+            ]
+        );
     }
 
     /**

@@ -15,6 +15,24 @@ class HostingTypeSeeder extends Seeder
      */
     public function run()
     {
-        HostingType::factory()->count(50)->create();
+        HostingType::create([
+            'name' =>'Podstawowy'
+        ]);
+
+        HostingType::create([
+            'name' =>'Średni'
+        ]);
+
+        HostingType::create([
+            'name' =>'Dla firm'
+        ]);
+
+        HostingType::create([
+            'name' =>'Dla studentów'
+        ]);
+
+        HostingType::create([
+            'name' =>'Pakiet pełny'
+        ]);
     }
 }

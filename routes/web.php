@@ -40,6 +40,9 @@ Route::middleware([
             ->middleware(['permission:users.index']);
     });
 
+    Route::get('async/users', [UserController::class, 'async'])
+        ->name('async.users');
+
     Route::resource('hosting-types', HostingTypeController::class)->only([
         'index', 'create', 'edit'
     ]);

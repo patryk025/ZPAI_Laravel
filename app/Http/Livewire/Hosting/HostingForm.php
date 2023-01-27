@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Hosting;
 
+use App\Models\Hosting;
 use Livewire\Component;
 use WireUi\Traits\Actions;
-use App\Models\Hosting;
+use App\Models\HostingType;
 use Illuminate\Support\Str;
 
 class HostingForm extends Component
@@ -12,6 +13,7 @@ class HostingForm extends Component
     use Actions;
     public Hosting $hosting;
     public Bool $editmode;
+    public array $hostingTypes;
 
     public function rules() {
         return [
@@ -34,6 +36,7 @@ class HostingForm extends Component
     public function mount(Hosting $hosting, Bool $editmode) {
         $this->hosting = $hosting;
         $this->editmode = $editmode;
+        $this->hostingTypes = $this->getTypes();
     }
 
     public function render() {
@@ -50,13 +53,26 @@ class HostingForm extends Component
         $this->hosting->save();
         $this->notification()->success(
             $title = $this->editmode
-                ? "Zaktualizowano typ hostingu"
-                : "Dodano nowy typ hostingu",
+                ? "Zaktualizowano hostingu"
+                : "Dodano nowy hostingu",
             $description = $this->editmode
-                ? "Udało się zaktualizować typ hostingu"
-                : "Udało się stworzyć nowy typ hostingu"
+                ? "Udało się zaktualizować hostingu"
+                : "Udało się stworzyć nowy hostingu"
         );
         $this->editmode = true;
+    }
+
+    private function getTypes(): array
+    {
+        $types = HostingType::select('id', 'name')->get();
+
+        $typesOptions = [];
+
+        foreach($types as ['id' => $id, 'name' => $name]) {
+            $typesOptions[$id] = $name;
+        }
+
+        return $typesOptions;
     }
 }
 
