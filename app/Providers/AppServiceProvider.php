@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+    protected $policies = [
+        'App\Models\Hosting' => 'App\Policies\HostingPolicy',
+    ];
 
     /**
      * Bootstrap any application services.
@@ -32,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
                 $query->time
             );
         });
+
+        $this->registerPolicies();
     }
 }

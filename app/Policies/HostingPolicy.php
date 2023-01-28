@@ -44,6 +44,11 @@ class HostingPolicy
         return $user->can('hosting.create');
     }
 
+    public function edit(User $user)
+    {
+        return $user->can('hosting.update');
+    }
+
     /**
      * Determine whether the user can update the model.
      *

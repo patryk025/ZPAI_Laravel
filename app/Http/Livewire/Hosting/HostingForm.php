@@ -21,7 +21,7 @@ class HostingForm extends Component
                 'required',
                 'string',
                 'min:2',
-                'unique:hosting,name' .
+                'unique:hostings,name' .
                     ($this->editmode ? (',' . $this->hosting->id) : '')
             ],
             'hosting.user_id' => [

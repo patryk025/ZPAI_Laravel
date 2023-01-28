@@ -35,7 +35,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'hosting.index']);
         Permission::create(['name' => 'hosting.manage']);
         Permission::create(['name' => 'hosting.create']);
-        Permission::create(['name' => 'hosting.edit']);
+        Permission::create(['name' => 'hosting.update']);
         Permission::create(['name' => 'hosting.restore']);
         Permission::create(['name' => 'hosting.delete']);
 
@@ -59,7 +59,7 @@ class PermissionSeeder extends Seeder
         $adminRole->givePermissionTo('hosting.index');
         $adminRole->givePermissionTo('hosting.manage');
         $adminRole->givePermissionTo('hosting.create');
-        $adminRole->givePermissionTo('hosting.edit');
+        $adminRole->givePermissionTo('hosting.update');
         $adminRole->givePermissionTo('hosting.restore');
         $adminRole->givePermissionTo('hosting.delete');
 

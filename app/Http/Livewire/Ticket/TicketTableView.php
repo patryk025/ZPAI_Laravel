@@ -96,7 +96,9 @@ class TicketTableView extends TableView
     public function softDelete(int $id) {
         $ticket = Ticket::find($id);
         $ticket->delete();
-        //$ticketStatus = TicketStatus::
+        $ticketStatus = TicketStatus::query()->where('name','=','ZAMKNIĘTY')->get()[0]->id;
+        $ticket->ticket_status_id = $ticketStatus;
+        $ticket->save();
         $this->notification()->success(
             $title = "Zamknięto",
             $description = __("Udało się zamknąć ticket :name", [
@@ -109,6 +111,9 @@ class TicketTableView extends TableView
     {
         $ticket = Ticket::withTrashed()->find($id);
         $ticket->restore();
+        $ticketStatus = TicketStatus::query()->where('name','=','PONOWNIE OTWARTY')->get()[0]->id;
+        $ticket->ticket_status_id = $ticketStatus;
+        $ticket->save();
         $this->notification()->success(
             $title = __("Powodzenie"),
             $description = __("Przywrócono ticket :name", [
