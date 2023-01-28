@@ -8,19 +8,19 @@ use LaravelViews\Views\View;
 class SoftDeleteTicketAction extends Action
 {
     public $title = '';
-    public $icon = 'trash-2';
+    public $icon = 'lock';
     public function __construct()
     {
         parent::__construct();
-        $this->title = 'Usuń';
+        $this->title = 'Zamknij';
     }
 
     public function handle($model, View $view)
     {
         //dd($view);
         $view->dialog()->confirm([
-            'title' => 'Usuwanie zgłoszenia',
-            'description' => 'Czy na pewno usunąć zgłoszenie: ' . $model->name,
+            'title' => 'Zamykanie zgłoszenia',
+            'description' => 'Czy na pewno zamknąć zgłoszenie: ' . $model->name,
             'icon' => 'question',
             'iconColor' => 'text-red-500',
             'accept' => [

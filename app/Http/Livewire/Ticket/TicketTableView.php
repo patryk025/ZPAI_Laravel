@@ -12,6 +12,8 @@ use App\Http\Livewire\Ticket\Actions\OpenTicketChatAction;
 use App\Http\Livewire\Ticket\Actions\RestoreTicketAction;
 use App\Http\Livewire\Ticket\Filters\SoftDeleteFilter;
 use App\Http\Livewire\Ticket\Actions\SoftDeleteTicketAction;
+use App\Models\TicketStatus;
+use Database\Seeders\TicketSeeder;
 
 class TicketTableView extends TableView
 {
@@ -52,7 +54,7 @@ class TicketTableView extends TableView
             Header::title(__('Nazwa użytkownika'))->sortBy('name'),
             Header::title(__('hosting-types.attributes.created_at'))->sortBy('created_at'),
             Header::title(__('hosting-types.attributes.updated_at'))->sortBy('updated_at'),
-            Header::title(__('hosting-types.attributes.deleted_at'))->sortBy('deleted_at'),
+            Header::title(__('Zamknięto'))->sortBy('deleted_at'),
         ];
     }
 
@@ -94,9 +96,10 @@ class TicketTableView extends TableView
     public function softDelete(int $id) {
         $ticket = Ticket::find($id);
         $ticket->delete();
+        //$ticketStatus = TicketStatus::
         $this->notification()->success(
-            $title = "Usunięto",
-            $description = __("Udało się skasować ticket :name", [
+            $title = "Zamknięto",
+            $description = __("Udało się zamknąć ticket :name", [
                 'name' => $ticket->title,
             ])
         );

@@ -48,7 +48,7 @@
                 <x-input placeholder="Wpisz tekst" wire:model="hosting.active_to" />
             </div>
         </div>
-        <div class="flex justify-end pt-2">
+        <div class="flex justify-end pt-2" style="padding-bottom: 100px;">
             <x-button href="{{ route('hosting.index') }}" secondary class="mr-2" label="Powrót"></x-button>
             <x-button type="submit" primary label="Zapisz" spinner></x-button>
         </div>

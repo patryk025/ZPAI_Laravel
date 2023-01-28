@@ -8,19 +8,19 @@ use LaravelViews\Actions\Action;
 class RestoreTicketAction extends Action 
 {
     public $title = '';
-    public $icon = 'trash';
+    public $icon = 'unlock';
 
     public function __construct()
     {
         parent::__construct();
-        $this->title = __('Przywróć');
+        $this->title = __('Otwórz');
     }
 
     public function handle($model, View $view) 
     {
         $view->dialog()->confirm([
-            'title' => __("Przywracanie zgłoszenia"),
-            'description' => __("Czy na pewno chcesz przywrócić zgłoszenie :name", [
+            'title' => __("Ponowne otwarcie zgłoszenia"),
+            'description' => __("Czy na pewno chcesz ponownie otworzyć zgłoszenie :name", [
                 'name' => $model->title
             ]),
             'icon' => 'question',

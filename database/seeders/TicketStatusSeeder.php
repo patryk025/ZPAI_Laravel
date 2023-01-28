@@ -36,5 +36,9 @@ class TicketStatusSeeder extends Seeder
         $pendingResponse = TicketStatus::create([
             'name' =>'OCZEKUJE NA ODPOWIEDŹ'
         ]);
+
+        $reopened = TicketStatus::create([
+            'name' =>'PONOWNIE OTWARTY'
+        ]);
     }
 }

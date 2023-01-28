@@ -23,6 +23,22 @@ class HostingForm extends Component
                 'min:2',
                 'unique:hosting,name' .
                     ($this->editmode ? (',' . $this->hosting->id) : '')
+            ],
+            'hosting.user_id' => [
+                'required',
+                'integer'
+            ],
+            'hosting.hosting_type_id' => [
+                'required',
+                'integer'
+            ],
+            'hosting.active_from' => [
+                'required',
+                'string'
+            ],
+            'hosting.active_to' => [
+                'required',
+                'string'
             ]
         ];
     }
