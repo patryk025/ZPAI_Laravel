@@ -14,6 +14,8 @@ class HostingController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Hosting::class);
+
         return view(
             'hosting.index'
         );
@@ -26,6 +28,8 @@ class HostingController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Hosting::class);
+
         return view(
             'hosting.form'
         );
@@ -61,6 +65,8 @@ class HostingController extends Controller
      */
     public function edit(Hosting $hosting)
     {
+        $this->authorize('edit', Hosting::class);
+
         return view(
             'hosting.form', [
                 'hosting' => $hosting
