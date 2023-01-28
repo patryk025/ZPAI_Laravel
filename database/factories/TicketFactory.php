@@ -23,8 +23,8 @@ class TicketFactory extends Factory
                 ->orderByRaw('RAND()')
                 ->first()->id,
             'ticket_status_id' => TicketStatus::select('id')
-            ->orderByRaw('RAND()')
-            ->first()->id,
+                ->orderByRaw('RAND()')
+                ->first(),
             'title' => $this->faker->word(),
             'description' => $this->faker->paragraph(1)
         ];

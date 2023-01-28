@@ -18,7 +18,7 @@ class HostingPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('hosting.index');
     }
 
     /**
@@ -30,7 +30,7 @@ class HostingPolicy
      */
     public function view(User $user, Hosting $hosting)
     {
-        //
+        return $user->can('hosting.index');
     }
 
     /**
@@ -41,7 +41,7 @@ class HostingPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('hosting.create');
     }
 
     /**
@@ -53,7 +53,8 @@ class HostingPolicy
      */
     public function update(User $user, Hosting $hosting)
     {
-        //
+        return $hosting->deleted_at === null
+            && $user->can('hosting.update');
     }
 
     /**
@@ -65,7 +66,8 @@ class HostingPolicy
      */
     public function delete(User $user, Hosting $hosting)
     {
-        //
+        return $hosting->deleted_at !== null
+            && $user->can('hosting.delete');
     }
 
     /**
@@ -77,7 +79,8 @@ class HostingPolicy
      */
     public function restore(User $user, Hosting $hosting)
     {
-        //
+        return $hosting->deleted_at !== null
+            && $user->can('teams.restore');
     }
 
     /**
@@ -89,6 +92,7 @@ class HostingPolicy
      */
     public function forceDelete(User $user, Hosting $hosting)
     {
-        //
+        return $hosting->deleted_at !== null
+            && $user->can('hosting.delete');
     }
 }
