@@ -36,7 +36,7 @@
                 <label for="name">{{ __('Przypisany hosting')}}</label>
             </div>
             <div class="">
-                <x-select :options="$statuses" option-key-value="true" wire:model="ticket.ticket_status_id" />
+                <x-select :options="$hostings" option-key-value="true" wire:model="ticket.hosting_id" />
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2">
@@ -44,7 +44,7 @@
                 <label for="name">{{ __('Status')}}</label>
             </div>
             <div class="">
-                <x-select :options="$hostings" option-key-value="true" wire:model="ticket.hosting_id" />
+                <x-select :options="$statuses" option-key-value="true" wire:model="ticket.ticket_status_id" />
             </div>
             <div class="flex justify-end pt-2">
                 <x-button href="{{ route('ticket.index') }}" secondary class="mr-2" label="Powrót"></x-button>

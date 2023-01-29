@@ -86,7 +86,7 @@ class TicketTableView extends TableView
 
     protected function actionsByRow() {
         return [
-            new OpenTicketChatAction('ticket.show', 'Otwórz chat'),
+            //new OpenTicketChatAction('ticket.show', 'Otwórz chat'),
             new EditTicketAction('ticket.edit', 'Edytuj'),
             new SoftDeleteTicketAction(),
             new RestoreTicketAction()

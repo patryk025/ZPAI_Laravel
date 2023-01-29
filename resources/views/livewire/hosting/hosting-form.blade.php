@@ -37,7 +37,7 @@
                 <label for="name">{{ __('hosting.attributes.active_from')}}</label>
             </div>
             <div class="">
-                <x-input placeholder="Wpisz tekst" wire:model="hosting.active_from" />
+                <x-datetime-picker placeholder="Wybierz datę" parse-format="YYYY-MM-DD HH:mm:ss" wire:model.defer="hosting.active_from"/>
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2">
@@ -45,7 +45,7 @@
                 <label for="name">{{ __('hosting.attributes.active_to')}}</label>
             </div>
             <div class="">
-                <x-input placeholder="Wpisz tekst" wire:model="hosting.active_to" />
+                <x-datetime-picker placeholder="Wybierz datę" parse-format="YYYY-MM-DD HH:mm:ss" wire:model.defer="hosting.active_to"/>
             </div>
         </div>
         <div class="flex justify-end pt-2" style="padding-bottom: 100px;">
